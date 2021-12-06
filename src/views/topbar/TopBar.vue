@@ -7,7 +7,7 @@
       <a class="menu-link" href="#">排行榜</a>
     </div>
     <div class="search-bar">
-      <input type="text" placeholder="搜索音乐" />
+      <input type="text" placeholder="搜索音乐" v-model="search" />
     </div>
     <div class="header-profile">
       <img v-if="!userImg" class="profile-img" src="~assets/img/04.png" alt="" />
@@ -48,6 +48,7 @@ export default {
       isUserShow: false,
       userName: "",
       userImg: "",
+      search: "",
     }
   },
   components: {
@@ -70,7 +71,7 @@ export default {
     getUserInfo() {
       if (window.localStorage.userInfo) {
         let userInfo = JSON.parse(window.localStorage.userInfo)
-        console.log(userInfo)
+        // console.log(userInfo)
         this.userName = userInfo.nickname
         this.userImg = userInfo.avatarUrl
       } else {

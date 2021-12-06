@@ -9,7 +9,7 @@
         <div class="wrapper">
           <p class="iconfont icon-shouji"></p>
           <input
-            type="text"
+          type="phone"
             @blur="phoneRegEvent"
             ref="inputPhone"
             v-model="phone"
@@ -143,10 +143,11 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 35%;
-  width: 45%;
+  height: 300px;
+  width: 500px;
   border-radius: 15px;
-  background: rgba(190, 183, 199, 0.5);
+  background: rgba(190, 183, 199, 0.9);
+  z-index: 9;
 }
 
 .wrappertitle {

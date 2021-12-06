@@ -65,7 +65,7 @@ export default {
 
 <style scoped>
 .left-side {
-  height: calc(100vh - 300px);
+  height: calc(100vh - 248px);
   flex-basis: 150px;
   padding: 22px;
   border-right: 1px solid #ccc;

@@ -58,6 +58,8 @@ export default {
   right: 130px;
   width: 260px;
   height: 300px;
+  z-index: 9;
+  background-color: rgba(115, 84, 153, 0.9);
   border: 1px solid rgb(116, 111, 111);
   border-top: none;
   border-radius: 10px;

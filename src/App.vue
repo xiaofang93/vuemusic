@@ -1,25 +1,26 @@
-
 <template>
   <div id="app">
     <top-bar></top-bar>
     <div class="wrapper">
       <left-menu />
-      <router-view></router-view>
+      <router-view> </router-view>
+      
     </div>
-    <botton-player />
+    <bottom-player />
   </div>
 </template>
 <script>
 import TopBar from "./views/topbar/TopBar"
 import LeftMenu from "./views/leftmenu/LeftMenu.vue"
-import BottonPlayer from "./views/bottonplayer/BottonPlayer.vue"
+import BottomPlayer from "./views/bottomplayer/BottomPlayer.vue"
 
 export default {
   name: "app",
   components: {
     TopBar,
-    BottonPlayer,
+    BottomPlayer,
     LeftMenu,
+    
   },
 }
 </script>
