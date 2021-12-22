@@ -95,6 +95,7 @@ export default new Vuex.Store({
         console.log(res)
         let songAllDetail = res.data.playlist
         let songDetail = res.data.playlist.tracks
+        
         console.log(songAllDetail);
         console.log(songDetail)
         context.commit("songDetail", songDetail)

@@ -1,24 +1,22 @@
 <template>
-  <div v-if="isShow" class="recommendSwiper">
-    
-      <!-- 歌单列表 -->
-      <div
-        class="musicListTitle musicItem"
-        v-for="(item, index) in songDetail"
-        :key="item.id"
-        @dblclick="playMusic(index)"
-        :class="{ currentMusic: item.id == StateSongCurrentId }"
-      >
-        <li>
-          <span class="musicIndex">{{ index + 1 }}</span>
-          <img :src="item.al.picUrl" alt="" />
-          <span class="musicTitle">{{ item.name }}</span>
-        </li>
-        <li>{{ item.ar[0].name }}</li>
-        <li>{{ item.al.name }}</li>
-        <li>{{ setTime(item.dt) }}</li>
-      </div>
-    
+  <div v-show="isShow" class="recommendSwiper">
+    <!-- 歌单列表 -->
+    <div
+      class="musicListTitle musicItem"
+      v-for="(item, index) in storeSongCurrentDetail"
+      :key="item.id"
+      @dblclick="playMusic(index)"
+      :class="{ currentMusic: item.id == StateSongCurrentId }"
+    >
+      <li>
+        <span class="musicIndex">{{ index + 1 }}</span>
+        <img :src="item.al.picUrl" alt="" />
+        <span class="musicTitle">{{ item.name }}</span>
+      </li>
+      <li>{{ item.ar[0].name }}</li>
+      <li>{{ item.al.name }}</li>
+      <li>{{ setTime(item.dt) }}</li>
+    </div>
   </div>
 </template>
 
@@ -28,13 +26,10 @@ export default {
   data() {
     return {
       // 音乐歌单详情数据
-      songDetail: [],
+      // songDetail: [],
       // 音乐ID数据
       songAlId: [],
     }
-  },
-  created() {
-    this.getRecommendSongFun()
   },
 
   computed: {
@@ -46,18 +41,25 @@ export default {
     StateSongCurrentId() {
       return this.$store.state.songCurrentId
     },
+    // 当前所播放的音乐列表
+    storeSongCurrentDetail() {
+      return this.$store.state.songCurrentDetail
+    },
+  },
+  // 实时更新所播放的音乐列表
+  watch: {
   },
   methods: {
-    // 获取每日推荐歌曲
-    getRecommendSongFun() {
-      if (this.$store.state.songDetail.length != 0) {
-        this.songDetail = this.$store.state.songDetail
-      } else if(window.localStorage.songCurrentDetail.length!=0){
-        this.songDetail=JSON.parse(window.localStorage.songCurrentDetail)
-      }else{
-        return ""
-      } 
-    },
+    // // 获取每日推荐歌曲
+    // getRecommendSongFun() {
+    //   if (this.$store.state.songDetail.length != 0) {
+    //     this.songDetail = this.$store.state.songDetail
+    //   } else if (window.localStorage.songCurrentDetail.length != 0) {
+    //     this.songDetail = JSON.parse(window.localStorage.songCurrentDetail)
+    //   } else {
+    //     return ""
+    //   }
+    // },
     // 双击列表歌曲的回调
     playMusic(index) {
       this.$store.commit("songCurrent", index)
@@ -89,7 +91,7 @@ export default {
   height: calc(100vh - 500px);
   overflow: hidden;
   overflow-y: scroll;
-  background: rgba(158, 127, 180,.9);
+  background: rgba(158, 127, 180, 0.9);
 }
 /* 修改滚动条样式 */
 .recommendSwiper::-webkit-scrollbar {
@@ -125,7 +127,8 @@ export default {
   text-align: center;
 }
 .musicListTitle li:nth-child(1) img {
-  height: 100%;
+  height: 55px;
+  width: 55px;
   border-radius: 50%;
   margin-right: 10px;
 }

@@ -1,17 +1,24 @@
 <template>
   <div class="recommendSwiper">
-    <!-- 歌单头部标题区域 -->
+    <!-- 每日歌曲自定义头部标题区域 -->
     <div class="Header">
-      <div class="title">
-        <img v-if="!stateSongAllDetail.coverImgUrl" class="headerImg" src="../../assets/img/05.png" alt="" />
-        <img v-else class="headerImg" :src="stateSongAllDetail.coverImgUrl" alt="">
+      <div class="title" v-if="stateSongAllDetail.length == 0">
+        <img class="headerImg" src="../../assets/img/05.png" alt="" />
         <div class="headerText">
-          <p v-if="!stateSongAllDetail.name">每日歌曲推荐</p>
-          <p v-else>{{ stateSongAllDetail.name }}</p>
-          <p v-if="!stateSongAllDetail.description">根据你的口味生成,每天6:00更新</p>
-          <p v-else>{{ stateSongAllDetail.description }}</p>
+          <p>每日歌曲推荐</p>
+          <p>根据你的口味生成,每天6:00更新</p>
         </div>
       </div>
+      <!-- 推荐歌单头部标题 -->
+      <div class="title" v-else>
+        <img class="headerImg" :src="stateSongAllDetail.coverImgUrl" alt="" />
+        <div class="headerText">
+          <p>{{ stateSongAllDetail.name }}</p>
+          <p>简介: {{ stateSongAllDetail.description }}</p>
+          <p>标签</p>
+        </div>
+      </div>
+
       <div class="headerBtn">
         <span>播放全部</span>
         <span>收藏全部</span>
@@ -61,9 +68,10 @@ export default {
       songAlId: [],
     }
   },
-  created() {
+  mounted() {
     this.getRecommendSongFun()
   },
+
   computed: {
     // 当前所播放的音乐ID
     stateSongCurrentId() {
@@ -73,6 +81,11 @@ export default {
       let songAllDetail = this.$store.state.songAllDetail
       console.log(songAllDetail)
       return songAllDetail
+    },
+  },
+  watch: {
+    stateSongAllDetail() {
+      this.getRecommendSongFun()
     },
   },
   methods: {
@@ -129,6 +142,7 @@ export default {
 }
 .title .headerImg {
   width: 100px;
+  
   border-radius: 10px;
 }
 .headerText {
@@ -194,7 +208,8 @@ export default {
   text-align: center;
 }
 .musicListTitle li:nth-child(1) img {
-  height: 100%;
+  height: 55px;
+  width: 55px;
   border-radius: 50%;
   margin-right: 10px;
 }
