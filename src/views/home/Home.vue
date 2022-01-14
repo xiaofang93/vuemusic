@@ -15,7 +15,12 @@
         <p class="name">每日推荐歌曲</p>
       </div>
       <!-- 每日推荐歌单 -->
-      <div class="recommendItem" v-for="item in recommendList" :key="item.userId" @click="recommendBtn(item.id)">
+      <div
+        class="recommendItem"
+        v-for="item in recommendList"
+        :key="item.userId"
+        @click="recommendBtn(item.id)"
+      >
         <img class="image" :src="item.picUrl" alt="" />
         <span class="iconfont icon-zuihouyiyemoyexiayishou">
           {{ playCount(item.playCount) }}
@@ -27,7 +32,7 @@
 </template>
 
 <script>
-import { getRecommend } from "../../notework/requestList"
+import { getRecommend } from "../../network/requestList"
 export default {
   name: "Home.vue",
   data() {
@@ -36,7 +41,6 @@ export default {
 
       recommendList: [],
       recommendSong: [],
-     
     }
   },
   created() {
@@ -57,7 +61,6 @@ export default {
         console.log(res)
         this.recommendList = res.data.result
       })
-    
     },
 
     // 播放数量过滤
@@ -77,11 +80,11 @@ export default {
       this.$router.push("/recommend")
     },
 
-    recommendBtn(id){
-      console.log(id);
-      this.$store.dispatch("recommendInfos",id)
+    recommendBtn(id) {
+      console.log(id)
+      this.$store.dispatch("recommendInfos", id)
       this.$router.push("/recommend")
-    }
+    },
   },
 }
 </script>

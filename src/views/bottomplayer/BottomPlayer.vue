@@ -88,7 +88,7 @@
 </template>
 
 <script>
-import { getSongURL } from "@/notework/requestList"
+import { getSongURL } from "@/network/requestList"
 import MiniPlayList from "./MiniPlayList.vue"
 export default {
   name: "BottomPlayer",

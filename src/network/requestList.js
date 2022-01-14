@@ -3,10 +3,9 @@
  * @Date: 2021-11-13 22:25:30
  * @LastEditTime: 2021-11-14 21:23:42
  * @LastEditors: Please set LastEditors
- * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- * @FilePath: \vueMusic\src\notework\requestList.js
+ * @FilePath: \vueMusic\src\network\requestList.js
  */
-import { request } from "@/notework/request"
+import { request } from "@/network/request"
 
 /**
  * 获取用户个人信息

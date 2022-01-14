@@ -99,7 +99,7 @@ export default {
         return ""
       }
     },
-    // 双击列表歌曲的回调
+    // 双击列表的回调
     playMusic(index) {
       this.$store.commit("songCurrent", index)
     },
@@ -120,6 +120,15 @@ export default {
 
 <style scoped>
 /* 头部文字 */
+
+
+
+
+
+
+
+
+
 .recommendSwiper {
   width: 100%;
   height: calc(100vh - 204px);

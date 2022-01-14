@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { loginForPhone } from "@/notework/requestList"
+import { loginForPhone } from "@/network/requestList"
 export default {
   name: "login",
   props: ["isShow"],

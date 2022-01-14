@@ -1,6 +1,6 @@
 import Vue from "vue"
 import Vuex from "vuex"
-import { getRecommendSong, getRecommendSongs, getRecommendList } from "../notework/requestList.js"
+import { getRecommendSong, getRecommendSongs, getRecommendList } from "../network/requestList.js"
 
 Vue.use(Vuex)
 
@@ -29,7 +29,7 @@ export default new Vuex.Store({
     // 初次开启时,将本地信息放入state
     updateSongDetail(state) {
       console.log("1")
-      // 如果本地有Detail,说明本地有历史播放列表信息,则将本地转存入vueX
+      // 如果本地有Detail,说明本地有历史播放列表信息,则将本地转存入vuex
       if (window.localStorage.songCurrentDetail) {
         state.songCurrentDetail = JSON.parse(window.localStorage.songCurrentDetail)
         state.songCurrentId = window.localStorage.songCurrentId
